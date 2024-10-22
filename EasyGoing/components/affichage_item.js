@@ -2,9 +2,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import React, { useState, useEffect } from 'react';
 import { Animated, View, TouchableOpacity, Text, FlatList, Clipboard, Button, TextInput, ScrollView, Image  } from 'react-native';
 import { styles } from '../style/styles.js';
-
-//import pour les icones
-import FontAwesome from 'react-native-vector-icons/FontAwesome'; // Pour les étoiles
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 
 const renderRating = (rating) => {
@@ -14,11 +12,11 @@ const renderRating = (rating) => {
 
   let stars = [];
   for (let i = 0; i < 5; i++) {
-    let starName = 'star-o'; // Utilisez 'star-o' pour une étoile vide
+    let starName = 'star-o'; 
     if (i < Math.floor(rating)) {
-      starName = 'star'; // Étoile pleine
+      starName = 'star';
     } else if (i === Math.floor(rating) && rating % 1 >= 0.5) {
-      starName = 'star-half-o'; // Demi-étoile
+      starName = 'star-half-o';
     }
     stars.push(<FontAwesome key={i} name={starName} size={15} color="gold" />);
   }
@@ -52,7 +50,7 @@ const PlaceItem = ({ name, rating, vicinity, photoUrl }) => {
     </View>
   );
 };
-//fonction pour afficher les signe de dollard selon si le restaurant est cher ou pas
+
 const renderPriceLevel = (price_level) => {
   if (!price_level) return 'N/A';
   return '$'.repeat(price_level);
@@ -88,54 +86,3 @@ const RestaurantItem = ({ name, rating, price_level, vicinity, photoUrl }) => {
 };
 
 export {RestaurantItem, PlaceItem};
-
-/*import Icon from 'react-native-vector-icons/Ionicons';
-import React, { useState, useEffect } from 'react';
-import { Animated, View, TouchableOpacity, Text, FlatList, Clipboard, Button, TextInput, ScrollView, Image  } from 'react-native';
-import { styles } from '../style/styles.js';
-
-const renderRating = (rating) => {
-  let stars = [];
-  for (let i = 0; i < 5; i++) {
-    let starName = i < Math.floor(rating) ? 'star' : 'star-outline';
-    stars.push(<FontAwesome key={i} name={starName} size={15} color="gold" />);
-  }
-  return stars;
-};
-
-const PlaceItem = ({name,rating,vicinity,photoUrl}) => {
-    return (
-      <View tyle={styles.itemContainer}>
-        {photoUrl ? (
-          <Image source={{ uri: photoUrl }} style={styles.imageStyle} />
-        ) : (
-          <Icon name="camera-outline" size={96} color="#ccc" />
-        )}
-        <View>
-          <Text style={styles.itemName}>{name}</Text>
-          <Text>Rating: {rating || 'N/A'}</Text>
-          <Text>{vicinity}</Text>
-        </View>
-      </View>
-    );
-}
-
-const RestaurantItem = ({ name, rating, price_level, vicinity, photoUrl }) => {
-    return (
-      <View style={styles.itemContainer}>
-        {photoUrl ? (
-          <Image source={{ uri: photoUrl }} style={styles.imageStyle} />
-        ) : (
-          <Icon name="camera-outline" size={96} color="#ccc" />
-        )}
-        <View>
-          <Text style={styles.itemName}>{name}</Text>
-          <Text>Rating: {rating || 'N/A'}</Text>
-          <Text>Price Level: {price_level || 'N/A'}</Text>
-          <Text style={styles.itemVicinity}>{vicinity}</Text>
-        </View>
-      </View>
-    );
-};
-
-export {RestaurantItem, PlaceItem}; */
